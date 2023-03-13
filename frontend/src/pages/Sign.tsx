@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { flex } from '@/styles/vars'
 
-import Login from '@/components/Login'
+import Sign from '@/components/Sign'
 
 export const Page = styled.div`
   ${flex.center}
@@ -13,12 +13,12 @@ export const Page = styled.div`
   background-repeat: no-repeat;
 `
 
-export default function PageLogin() {
+export default function PageSign() {
   
 
   return(
     <Page>
-      <Login />
+      <Sign />
     </Page>
   )
 }

@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import PageLogin from './pages/Login';
+
+import PageLogin from '@/pages/Login';
+import PageSign from '@/pages/Sign';
 
 function App() {
 
@@ -9,8 +11,8 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path="/" element={ <PageLogin /> } />
-
+          <Route path="/login" element={ <PageLogin /> } />
+          <Route path="/sign" element={ <PageSign /> } />
 
         </Routes>
       </Router>

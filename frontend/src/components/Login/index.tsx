@@ -1,16 +1,20 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import { Checkbox } from "@mui/material";
 
-import { BoardInput, BoardOptions, BoardButtons, ListOptions } from "./index.styles"
+import { BoardOptions } from "./index.styles"
 
-import UIboardInputsLogin from "../../UI/login/BoardInputs";
+import UIBoard from "@/UI/login-sign/Board";
+import UIInput from "@/UI/login-sign/Input";
 
 import { MdOutlineMail, MdEmail } from 'react-icons/md'
 import { RiLockPasswordLine, RiLockPasswordFill } from 'react-icons/ri';
-import { useEffect } from "react";
+
 
 
 export default function Login() {
+
 
   useEffect(() => {
     let email = document.getElementById('email');
@@ -24,29 +28,49 @@ export default function Login() {
       if(e.code === 'Enter') pwd?.blur();
     } )
 
-  }, [])
+  }, []);
+
+
+
+  function validate() {
+    // validate datas
+  }
+
+  function redirectSign(){
+    const link = document.getElementById('refLink');
+
+    if(link) link.click();
+  };
+
 
   return(
-    <UIboardInputsLogin>
+    <UIBoard primary='Entrar' secondary='Criar Conta' funcPri={ validate } funcSec={ redirectSign }>
+      <Link id="refLink" to="/sign" style={{display: "none"}} />
 
-      <BoardInput>
-        <input name="email" id="email" type="text" placeholder="email@domain.com" />
-        <label htmlFor="email">Email</label>
-        <div className="icon">
-          <MdOutlineMail className="line" />
-          <MdEmail className="fill" />
-        </div>
-      </BoardInput>
+      <UIInput
+       id='email'
+       placeholder="email@domain.com"
+       label='Email'
+       Icons={{ 
+        line: MdOutlineMail,
+        fill: MdEmail
+        }}
+       isPwd={false}
+       func={() => {}}
+      />
+
+      <UIInput
+       id='pwd'
+       placeholder="********"
+       label='Senha'
+       Icons={{ 
+        line: RiLockPasswordLine,
+        fill: RiLockPasswordFill
+        }}
+       isPwd={true}
+       func={() => {}}
+      />
       
-      <BoardInput>
-        <input name="pwd" id="pwd" type="text" placeholder="********" />
-        <label htmlFor="pwd">Senha</label>
-        <div className="icon">
-          <RiLockPasswordLine className="line" />
-          <RiLockPasswordFill className="fill" />
-        </div>
-      </BoardInput>
-
       <BoardOptions>
         <div>
           <Checkbox inputProps={{ 'aria-label': 'Checkbox demo', 'id': 'rememberMe' }} defaultChecked />
@@ -55,29 +79,7 @@ export default function Login() {
 
         <Link to="/" className="forgot">esqueci a senha</Link>
       </BoardOptions>
-      
-      <BoardButtons>
-        <button className="login"> <span>Entrar</span> </button>
-        <Link to="/" className="sign">Criar Conta</Link>
-      </BoardButtons>
 
-      <ListOptions>
-
-        <li>
-          <button>
-            <img src="/assets/icons/login/google.png" alt="google" />
-          </button>
-        </li>
-
-        <li>
-          <Link to="/">
-            <img src="/assets/icons/login/guest.png" alt="guest" />
-          </Link>
-        </li>
-
-          
-      </ListOptions>
-
-    </UIboardInputsLogin>
+    </UIBoard>
   )
 }

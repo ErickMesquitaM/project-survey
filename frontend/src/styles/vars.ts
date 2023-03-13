@@ -2,6 +2,7 @@ export const colors = {
   white: '#f3f3fb',
   black: '#28292a',
   blue: '#1976d2',
+  error: '#ff4747',
 }
 
 export const flex = {

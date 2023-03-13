@@ -3,29 +3,39 @@ import { colors } from './vars';
  
 export const GlobalStyle = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
   *, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: ${colors.black};
+    
+    font-weight: 500;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   h1, h2, h3, h4, h5, h6{
-    font-size: 60px;
-    font-weight: 700;
-    color: blue;
+    font-weight: 600;
+    font-size: 16px;
   }
 
   button, a{
+    font-weight: 600;
+    font-size: 16px;
+
     border: none;
     background: transparent;
     color: black;
-    font-size: 16px;
     text-decoration: none;
     cursor: pointer;
+
+    *{
+      font-weight: 600;
+      font-size: 16px;
+    }
   }
 
   label{
